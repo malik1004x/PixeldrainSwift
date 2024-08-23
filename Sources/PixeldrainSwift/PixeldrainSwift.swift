@@ -67,4 +67,8 @@ public class PixeldrainAPI {
         let data = try await self.makeDataRequest(target: "/user/lists")
         return try PixeldrainListInfo.array(from: data)
     }
+    
+    deinit {
+        self.session.invalidateAndCancel()
+    }
 }
